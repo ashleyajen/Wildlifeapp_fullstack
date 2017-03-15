@@ -3,9 +3,18 @@ class SightingsController < ApplicationController
 
   # GET /sightings
   # GET /sightings.json
+  # TODO: fix time edge cases
+
+
   def index
-    @sightings = Sighting.all
+    if params[:start_date].present? && params[:end_date].present? && !params[:region].blank?
+      @sightings = Sighting.where(date: params[:start_date]..params[:end_date], region: params[:region])
+      # render('sightings/index.html.erb')
+    else
+      @sightings = Sighting.all
+    end
   end
+# loop through all the sightings. if sighting.region = params[:region]
 
   # GET /sightings/1
   # GET /sightings/1.json
@@ -14,9 +23,9 @@ class SightingsController < ApplicationController
 
   # GET /sightings/new
   def new
-    @animal = Animal.find(params[:animal_id])
-    @sighting = Sighting.new
-    @sighting.animal = @animal
+      @animal = Animal.find(params[:animal_id])
+      @sighting = Sighting.new
+      @sighting.animal = @animal
   end
 
   # GET /sightings/1/edit
@@ -71,6 +80,6 @@ class SightingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sighting_params
-      params.require(:sighting).permit(:date, :reccurence, :latitude, :longitude, :animal_id)
+      params.require(:sighting).permit(:date, :reccurence, :latitude, :longitude, :region, :animal_id)
     end
 end

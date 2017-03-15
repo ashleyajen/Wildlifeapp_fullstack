@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Sightings</h1>
+<br>
 
 <table>
   <thead>
@@ -9,6 +10,8 @@
       <th>Reccurence</th>
       <th>Latitude</th>
       <th>Longitude</th>
+      <th>Region</th>
+      <th>Animal</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +23,8 @@
         <td><%= sighting.reccurence %></td>
         <td><%= sighting.latitude %></td>
         <td><%= sighting.longitude %></td>
+        <th><%= sighting.region %></th>
+        <th><%= sighting.animal.common_name %></th>
         <td><%= link_to 'Show', sighting %></td>
         <td><%= link_to 'Edit', edit_sighting_path(sighting) %></td>
         <td><%= link_to 'Destroy', sighting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,7 +32,42 @@
     <% end %>
   </tbody>
 </table>
+<br>
+<form action="/sightings" method="get">
+  <table>
+    <thead>
+      <th><label for="start_date">Start date</label></th>
+      <th><label for="end_date">End date</label></th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input id="start_date" name="start_date" type="text" placeholder="yyyy-mm-dd"></td>
+        <td><input id="end_date" name="end_date" type="text" placeholder="yyyy-mm-dd"></td>
+        <td>
+          <input type="text" name="region" placeholder="Region" />
+        </td>
+        <td><button>Run report</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</form>
+
+
+
+
+<!-- we need a loop to go through each sighting and match the params(start_date, end_date) and print them to the page  -->
+
+<!-- if sightings.date is between params[start_date] && params [end_date] then print out onto the page -->
+
+
+
+
+
+
+
 
 <br>
-
-<%= link_to 'New Sighting', new_sighting_path %>
+<%= link_to 'Back to Animals', animals_path %>

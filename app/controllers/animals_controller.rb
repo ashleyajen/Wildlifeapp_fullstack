@@ -14,10 +14,11 @@ class AnimalsController < ApplicationController
 
   # GET /animals/new
   def new
+    # @animal.sighting = Animal.find(params[:animal_id])
     @animal = Animal.new
     @animals_for_select = Animal.all.map do |animal|
     [animal.kingdom]
-end
+    end
   end
 
   # GET /animals/1/edit
@@ -72,6 +73,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def animal_params
-      params.require(:animal).permit(:common_name, :latin_name, :kingdom)
+      params.require(:animal).permit(:common_name, :latin_name, :kingdom, :animal_id)
     end
 end

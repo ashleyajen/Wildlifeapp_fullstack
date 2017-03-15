@@ -23,7 +23,8 @@
 
   <div class="field">
     <%= f.label :kingdom %>
-    <%= f.text_field :kingdom %>
+    <%= f.select :kingdom, [ 'Mammal','Insect','Reptile','Amphibian','Bird','Crustacean' ], :prompt => 'Select One' %>
+    <!-- this is how to make a drop down menu. Note: kingdom is the method, and the stuff in the array are the arguments, and the prompt is the option -->
   </div>
 
 

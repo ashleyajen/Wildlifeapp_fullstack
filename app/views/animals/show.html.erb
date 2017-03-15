@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @animal.common_name %></h1>
+
 <p>
   <strong>Common name:</strong>
   <%= @animal.common_name %>
@@ -14,6 +16,30 @@
   <strong>Kingdom:</strong>
   <%= @animal.kingdom %>
 </p>
+<br>
 
+<h2>Sightings for <%=@animal.common_name%>:</h2>
+        <table>
+          <thead>
+            <th>Date Seen</th>
+            <th>Reccurence</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Region</th>
+          </thead>
+          <tbody>
+            <% @animal.sightings.each do |sighting| %>
+            <tr>
+              <td><%= sighting.date %></td>
+              <td><%= sighting.reccurence %></td>
+              <td><%= sighting.latitude %></td>
+              <td><%= sighting.longitude %></td>
+              <td><%= sighting.region %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+<br>
 <%= link_to 'Edit', edit_animal_path(@animal) %> |
 <%= link_to 'Back', animals_path %>

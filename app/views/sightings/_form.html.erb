@@ -31,6 +31,11 @@
     <%= f.text_field :longitude %>
   </div>
 
+  <div class="field">
+    <%= f.label :region %>
+    <%= f.select :region, ['Region 1','Region 2','Region 3','Region 4'], :prompt => 'Select One' %>
+  </div>
+
   <%= f.hidden_field :animal_id, value: sighting.animal_id %>
 
   <div class="actions">
