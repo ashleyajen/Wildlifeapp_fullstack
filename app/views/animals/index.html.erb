@@ -19,13 +19,15 @@
         <td><%= animal.latin_name %></td>
         <td><%= animal.kingdom %></td>
         <td><%= link_to 'Details', animal %></td>
-        <td><%= link_to 'Add Sighting', new_sighting_path(:animal_id => animal.id) %></td>
+        <td><%= link_to 'Add Sighting', new_sighting_path(:animal_id => animal.id)%></td>
         <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
         <td><%= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+
 
 <br>
 

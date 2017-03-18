@@ -36,6 +36,11 @@
     <%= f.select :region, ['Region 1','Region 2','Region 3','Region 4'], :prompt => 'Select One' %>
   </div>
 
+  <div class="field">
+    <%= f.label :color %>
+    <%= f.select :color, ['Salmon','Orange','Gold','MediumSeaGreen', 'MediumTurquoise', 'Orchid'], :prompt => 'Select Color' %>
+  </div>
+
   <%= f.hidden_field :animal_id, value: sighting.animal_id %>
 
   <div class="actions">

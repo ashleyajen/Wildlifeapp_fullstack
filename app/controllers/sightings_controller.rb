@@ -14,6 +14,16 @@ class SightingsController < ApplicationController
       @sightings = Sighting.all
     end
   end
+
+
+  def get_events
+      @sightings = Sighting.all
+      events = []
+      @sightings.each do |sighting|
+        events << { id: sighting.id, title: sighting.animal.common_name, start: sighting.date, url: Rails.application.routes.url_helpers.sighting_path(sighting.id), color: sighting.color}
+      end
+      render :json => events.to_json
+    end
 # loop through all the sightings. if sighting.region = params[:region]
 
   # GET /sightings/1
@@ -80,6 +90,6 @@ class SightingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sighting_params
-      params.require(:sighting).permit(:date, :reccurence, :latitude, :longitude, :region, :animal_id)
+      params.require(:sighting).permit(:date, :reccurence, :latitude, :longitude, :region, :animal_id, :color)
     end
 end
